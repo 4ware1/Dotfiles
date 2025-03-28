@@ -53,7 +53,7 @@ This repository contains my personalized configuration files for my development 
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/your-username/dotfiles.git
+git clone https://github.com/4ware1/dotfiles.git
 cd dotfiles
 ```
 
