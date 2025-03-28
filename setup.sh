@@ -1,6 +1,6 @@
-/#!/usr/bin/bash
+#!/usr/bin/bash
 
-# Colours
+# Colors
 greenColour="\e[0;32m\033[1m"
 endColour="\033[0m\e[0m"
 redColour="\e[0;31m\033[1m"
@@ -41,10 +41,10 @@ function ctrl_c(){
     exit 1
 }
 
-# Función para preguntar sí/no
+# Function to ask yes/no
 function ask_yes_no() {
     while true; do
-        echo -en "${yellowColour}[?] ¿Deseas instalar $1? ([y]/n) ${endColour}"
+        echo -en "${yellowColour}[?] Do you want to install $1? ([y]/n) ${endColour}"
         read -r response
         response=${response:-"y"}
         if [[ $response =~ ^[Yy]$ ]]; then
@@ -52,7 +52,7 @@ function ask_yes_no() {
         elif [[ $response =~ ^[Nn]$ ]]; then
             return 1
         else
-            echo -e "\n${redColour}[!] Respuesta inválida, por favor intenta de nuevo${endColour}"
+            echo -e "\n${redColour}[!] Invalid response, please try again${endColour}"
         fi
     done
 }
@@ -65,11 +65,11 @@ else
     banner
     sleep 1
 
-    # Paquetes básicos
-    if ask_yes_no "los paquetes básicos del entorno"; then
+    # Basic packages
+    if ask_yes_no "the basic environment packages"; then
         echo -e "\n\n${blueColour}[*] Installing necessary packages for the environment...\n${endColour}"
         sleep 2
-        sudo apt install -y kitty rofi feh xclip ranger i3lock-fancy scrot scrub wmname imagemagick python3-pip procps tty-clock fzf lsd bat pamixer flameshot
+        sudo apt install -y kitty rofi feh xclip ranger i3lock-fancy scrot scrub wmname imagemagick python3-pip procps tty-clock fzf lsd bat zsh pamixer flameshot
         if [ $? != 0 ] && [ $? != 130 ]; then
             echo -e "\n${redColour}[-] Failed to install some packages!\n${endColour}"
             exit 1
@@ -79,8 +79,8 @@ else
         fi
     fi
 
-    # BSPWM y dependencias
-    if ask_yes_no "BSPWM y sus dependencias"; then
+    # BSPWM and dependencies
+    if ask_yes_no "BSPWM and its dependencies"; then
         echo -e "\n${purpleColour}[*] Installing necessary dependencies for bspwm...\n${endColour}"
         sleep 2
         sudo apt install -y build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev libuv1-dev
@@ -125,8 +125,8 @@ else
         cd ..
     fi
 
-    # Polybar y dependencias
-    if ask_yes_no "Polybar y sus dependencias"; then
+    # Polybar and dependencies
+    if ask_yes_no "Polybar and its dependencies"; then
         echo -e "\n${purpleColour}[*] Installing necessary dependencies for polybar...\n${endColour}"
         sleep 2
         sudo apt install -y cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev
@@ -157,8 +157,8 @@ else
         cd ../../
     fi
 
-    # Picom y dependencias
-    if ask_yes_no "Picom y sus dependencias"; then
+    # Picom and dependencies
+    if ask_yes_no "Picom and its dependencies"; then
         echo -e "\n${purpleColour}[*] Installing necessary dependencies for picom...\n${endColour}"
         sleep 2
         sudo apt install -y meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev
@@ -188,8 +188,8 @@ else
         cd ..
     fi
 
-    # Oh My Zsh y Powerlevel10k
-    if ask_yes_no "Oh My Zsh y Powerlevel10k"; then
+    # Oh My Zsh and Powerlevel10k
+    if ask_yes_no "Oh My Zsh and Powerlevel10k"; then
         echo -e "\n${purpleColour}[*] Installing Oh My Zsh and Powerlevel10k for user $user...\n${endColour}"
         sleep 2
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -217,62 +217,62 @@ else
 
     # Neovim + NvChad
     if ask_yes_no "Neovim + NvChad"; then
-        echo -e "\n${purpleColour}[*] Descargando Neovim v0.10.0...\n${endColour}"
+        echo -e "\n${purpleColour}[*] Downloading Neovim v0.10.0...\n${endColour}"
         sleep 2
         mkdir -p ~/tools
         cd ~/tools
         wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
         if [ $? != 0 ] && [ $? != 130 ]; then
-            echo -e "\n${redColour}[-] Error al descargar Neovim!\n${endColour}"
+            echo -e "\n${redColour}[-] Error downloading Neovim!\n${endColour}"
             exit 1
         fi
 
-        echo -e "\n${purpleColour}[*] Instalando Neovim...\n${endColour}"
+        echo -e "\n${purpleColour}[*] Installing Neovim...\n${endColour}"
         tar -xzf nvim-linux64.tar.gz
         sudo mv nvim-linux64 /usr/local/
         sudo ln -sf /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
         rm nvim-linux64.tar.gz
         if [ $? != 0 ] && [ $? != 130 ]; then
-            echo -e "\n${redColour}[-] Error al instalar Neovim!\n${endColour}"
+            echo -e "\n${redColour}[-] Error installing Neovim!\n${endColour}"
             exit 1
         else
-            echo -e "\n${greenColour}[+] Neovim instalado correctamente\n${endColour}"
+            echo -e "\n${greenColour}[+] Neovim installed successfully\n${endColour}"
             sleep 1.5
         fi
 
-        if ask_yes_no "¿Deseas crear un alias de 'vim' para que use 'nvim'?"; then
-            echo -e "\n${purpleColour}[*] Configurando alias vim->nvim...\n${endColour}"
+        if ask_yes_no "Do you want to create a 'vim' alias to use 'nvim'?"; then
+            echo -e "\n${purpleColour}[*] Configuring vim->nvim alias...\n${endColour}"
             if ! grep -q "alias vim='nvim'" ~/.zshrc; then
                 echo "alias vim='nvim'" >> ~/.zshrc
             fi
-            if ask_yes_no "¿Deseas configurar el alias también para el usuario root?"; then
+            if ask_yes_no "Do you want to configure the alias for root user as well?"; then
                 sudo bash -c 'echo "alias vim='\''nvim'\''" >> /root/.zshrc'
             fi
-            echo -e "${greenColour}[+] Alias configurado correctamente\n${endColour}"
+            echo -e "${greenColour}[+] Alias configured successfully\n${endColour}"
             sleep 1.5
         fi
 
-        echo -e "\n${purpleColour}[*] Verificando la instalación de Neovim...\n${endColour}"
+        echo -e "\n${purpleColour}[*] Verifying Neovim installation...\n${endColour}"
         nvim_version=$(nvim --version | head -n 1)
         echo -e "${greenColour}[+] $nvim_version${endColour}"
         sleep 1.5
 
-        echo -e "\n${purpleColour}[*] Instalando NvChad...\n${endColour}"
+        echo -e "\n${purpleColour}[*] Installing NvChad...\n${endColour}"
         rm -rf ~/.config/nvim
         rm -rf ~/.local/share/nvim
         rm -rf ~/.cache/nvim
 
         git clone https://github.com/NvChad/starter ~/.config/nvim
         if [ $? != 0 ] && [ $? != 130 ]; then
-            echo -e "\n${redColour}[-] Error al instalar NvChad!\n${endColour}"
+            echo -e "\n${redColour}[-] Error installing NvChad!\n${endColour}"
             exit 1
         else
-            echo -e "\n${greenColour}[+] NvChad instalado correctamente\n${endColour}"
+            echo -e "\n${greenColour}[+] NvChad installed successfully\n${endColour}"
             sleep 1.5
         fi
 
-        if ask_yes_no "¿Deseas instalar NvChad para el usuario root?"; then
-            echo -e "\n${purpleColour}[*] Instalando NvChad para usuario root...\n${endColour}"
+        if ask_yes_no "Do you want to install NvChad for root user?"; then
+            echo -e "\n${purpleColour}[*] Installing NvChad for root user...\n${endColour}"
             sleep 2
             sudo rm -rf /root/.config/nvim
             sudo rm -rf /root/.local/share/nvim
@@ -280,17 +280,17 @@ else
             sudo mkdir -p /root/.config
             sudo cp -r ~/.config/nvim /root/.config/
             if [ $? != 0 ] && [ $? != 130 ]; then
-                echo -e "\n${redColour}[-] Error al instalar NvChad para root!\n${endColour}"
+                echo -e "\n${redColour}[-] Error installing NvChad for root!\n${endColour}"
                 exit 1
             else
-                echo -e "\n${greenColour}[+] NvChad instalado para root\n${endColour}"
+                echo -e "\n${greenColour}[+] NvChad installed for root\n${endColour}"
                 sleep 1.5
             fi
         fi
     fi
 
-    # Configuración del entorno
-    if ask_yes_no "la configuración del entorno (fuentes, wallpapers, archivos de configuración)"; then
+    # Environment configuration
+    if ask_yes_no "the environment configuration (fonts, wallpapers, config files)"; then
         echo -e "\n${blueColour}[*] Starting configuration of fonts, wallpaper, configuration files, .zshrc, .p10k.zsh, and scripts...\n${endColour}"
         sleep 0.5
 
@@ -364,11 +364,11 @@ else
     echo -e "\n${greenColour}[+] Done\n${endColour}"
     sleep 1.5
 
-    echo -e "\n${greenColour}[+] Environment configured :D\n${endColour}"
+    echo -e "\n${greenColour}[+] Environment configured successfully! :D\n${endColour}"
     sleep 1.5
 
     while true; do
-        echo -en "\n${yellowColour}[?] It's necessary to restart the system. Do you want to restart the system now? ([y]/n) ${endColour}"
+        echo -en "\n${yellowColour}[?] It's necessary to restart the system. Do you want to restart now? ([y]/n) ${endColour}"
         read -r
         REPLY=${REPLY:-"y"}
         if [[ $REPLY =~ ^[Yy]$ ]]; then
