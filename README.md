@@ -15,13 +15,13 @@ This repository contains my personalized configuration files for my development 
 ## 📸 Screenshots
 
 ### Desktop
-![Desktop](screenshots/desktop.png)
+![Desktop](/assets/Rofi-Menu.png)
 
 ### Terminal
-![Terminal](screenshots/terminal.png)
+![Terminal](/assets/terminal.png)
 
 ### Neovim
-![Neovim](screenshots/nvim.png)
+![Neovim](/assets/nvim.png)
 
 ## 🚀 Features
 
