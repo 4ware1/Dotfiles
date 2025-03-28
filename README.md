@@ -12,6 +12,16 @@ This repository contains my personalized configuration files for my development 
 - 📝 Neovim (Text Editor)
 - 🚀 NvChad (Neovim Configuration)
 
+## 📸 Screenshots
+
+### Desktop
+![Desktop](screenshots/desktop.png)
+
+### Terminal
+![Terminal](screenshots/terminal.png)
+
+### Neovim
+![Neovim](screenshots/nvim.png)
 
 ## 🚀 Features
 
@@ -134,11 +144,3 @@ You can customize the configurations by editing the corresponding files in the `
 - Some applications may require manual installation if not present in your system
 - NvChad installation will be performed automatically during setup.sh execution
 - The scripts in the `scripts/` directory are mainly focused on automating common CTF (Capture The Flag) tasks
-
-## 🤝 Contributing
-
-Contributions are welcome. If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
