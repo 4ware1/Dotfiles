@@ -39,7 +39,7 @@ This repository contains my personalized configuration files for my development 
 
 ## 📋 Prerequisites
 
-- Linux operating system (preferably Arch Linux or derivatives)
+- Linux operating system (preferably kali linux) Ubuntu/Debian.
 - Git
 - ZSH
 - BSPWM
