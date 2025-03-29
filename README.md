@@ -139,8 +139,8 @@ You can customize the configurations by editing the corresponding files in the `
 
 ## 📝 Notes
 
+- This setup is tailored for Debian/Ubuntu systems.
 - Make sure to backup your current dotfiles before installation
-- The installation script will replace existing configurations
-- Some applications may require manual installation if not present in your system
+- The installation script will replace existing configurations.
 - NvChad installation will be performed automatically during setup.sh execution
 - The scripts in the `scripts/` directory are mainly focused on automating common CTF (Capture The Flag) tasks
